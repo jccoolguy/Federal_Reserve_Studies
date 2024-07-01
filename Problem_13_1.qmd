@@ -1,0 +1,34 @@
+---
+title: "Problem 13.1"
+author: "Jack Cunningham"
+format: html
+editor: visual
+---
+
+Initial Conditions
+
+```{r}
+interest_paid <- .01
+reserve_req <- .1
+interest_earned_fed <- .005
+interest_earned_loans <- .05
+```
+
+a\) How do reserve requirements affect the amount Wells Fargo can earn on \$1,000 in checking account deposits?
+
+```{r}
+aval_for_loans <- 1000*(1-reserve_req)
+sent_to_reserve <- 1000*(reserve_req)
+
+earned_from_loans <- aval_for_loans*interest_earned_loans
+earned_from_fed <- sent_to_reserve*interest_earned_fed
+total_earned_curr_system <- earned_from_fed+earned_from_loans
+
+total_earned_no_req <- 1000*interest_earned_loans
+```
+
+In the current system the amount earned from \$1,000 in checking account deposits is `r total_earned_curr_system` with `r earned_from_loans` earned from loans and `r earned_from_fed` earned from interest on required reserves at the Fed. If there were no reserve requirement Wells Fargo would earn `r total_earned_no_reqv`dollars. Wells Fargo earns `r total_earned_no_req - total_earned_curr_system` dollars less than if there was no reserve requirement.
+
+b\)
+
+The opportunity cost is likely to be higher during an economic expansion. This is due to the fact that there will be more depositors at the bank and more loans that could be deployed to make excess capital over the reserve requirements. Since interest rates also tend to fall during recessions and rise during expansions the gap between the interest the fed pays and the amount that could be earned from loans is higher in an economic expansion.
